@@ -4,6 +4,6 @@ RUN npm install --unsafe-perm -g cncjs@1.9.22
 
 FROM registry.hub.docker.com/library/node:10.24.1-stretch-slim
 COPY --from=build /usr/local /usr/local
-EXPOSE 8000
+EXPOSE 80
 RUN mkdir /config
-CMD /usr/local/bin/cncjs -H 0.0.0.0 -p 8000 -c /config/cncrc
+CMD /usr/local/bin/cncjs -H 0.0.0.0 -p 80 -c /config/cncrc
