@@ -5,7 +5,7 @@
 ```bash
 docker volume create cncjs
 docker pull urpylka/cncjs:latest
-docker run -d --device=/dev/ttyACM0 --cap-add=SYS_RAWIO -v "cncjs:/config" -p 80:80 --name cncjs urpylka/cncjs:latest
+docker run -d --device=/dev/ttyACM0 --cap-add=SYS_RAWIO -v "cncjs:/config" -p 80:80 --restart unless-stopped --name cncjs urpylka/cncjs:latest
 ```
 
 ## Notes
