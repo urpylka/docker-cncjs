@@ -27,7 +27,7 @@ It cannot be installed to `alpine` by `npm install` or builded there by `node`.
 
 ## References
 
-* https://github.com/balena-io-playground/balena-cncjs
-* https://www.balena.io/blog/add-new-functionality-to-affordable-cnc-machines-using-cnc-js-and-balena/
 * https://cnc.js.org
 * https://github.com/cncjs/cncjs
+* https://github.com/balena-io-playground/balena-cncjs
+* https://www.balena.io/blog/add-new-functionality-to-affordable-cnc-machines-using-cnc-js-and-balena/
