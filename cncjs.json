@@ -1,7 +1,7 @@
 {
     "ports": [
         {
-            "comName": "/serialport/tty.esplink",
+            "comName": "/dev/tty.esplink",
             "manufacturer": "ESP LINK"
         }
     ]

@@ -1,12 +1,9 @@
-FROM registry.hub.docker.com/library/node:10.24.1-stretch as build
-RUN apt update && apt install -y python3 g++ make
-RUN npm install --unsafe-perm -g cncjs@1.9.22
+FROM urpylka/cncjs:latest
 
-FROM registry.hub.docker.com/library/node:10.24.1-stretch-slim
-COPY --from=build /usr/local /usr/local
-RUN apt update && apt install -y udev && apt clean
-EXPOSE 80
-RUN mkdir /config
-CMD /usr/local/bin/cncjs -H 0.0.0.0 -p 80 -c /config/cncrc
+RUN apt install -y supervisor socat
+
+ENV ESPLINK_HOST=127.0.0.1
 
 COPY ./cncjs.json /config/cncrc
+ADD ./supervisord.conf /etc/supervisor/supervisord.conf
+CMD /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
