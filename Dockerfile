@@ -8,3 +8,5 @@ RUN apt update && apt install -y udev && apt clean
 EXPOSE 80
 RUN mkdir /config
 CMD /usr/local/bin/cncjs -H 0.0.0.0 -p 80 -c /config/cncrc
+
+COPY ./cncjs.json /config/cncrc
