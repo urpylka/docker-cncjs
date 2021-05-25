@@ -8,18 +8,20 @@ docker pull urpylka/cncjs:latest
 docker run -d --device=/dev/ttyACM0 --cap-add=SYS_RAWIO -v "cncjs:/config" -p 80:80 --restart unless-stopped --name cncjs urpylka/cncjs:latest
 ```
 
+> To throw interface to docker container use `-v /dev/ttyAMA2:/dev/ttyAMA2` (`--device /dev/ttyAMA2` doesn't work).
+
 ## UART Wi-Fi bridge
 
-It can be made with `ESP8266`. For doing that use [esp-link](https://github.com/jeelabs/esp-link).
-To do virtual serial interface can be used `socat`.
+1. On CNC side it can be made with an `ESP8266` chip. For doing it use [esp-link](https://github.com/jeelabs/esp-link).
+2. Use preconfigured image from [`feature-esplink` branch](../../tree/feature-esplink).
 
-```bash
-socat pty,link=/dev/ttyAMA2,raw,echo=0 tcp:IP_OF_ESP8266:23
-```
+    To do it virtual serial interface manually can be used `socat`.
 
-`link=/dev/ttyAMA2` – doesn't work with some paths at macOS.
+    ```bash
+    socat pty,link=/dev/ttyAMA2,raw,echo=0 tcp:IP_OF_ESP8266:23
+    ```
 
-To throw intarface to docker container use `-v /dev/ttyAMA2:/dev/ttyAMA2`, `--device /dev/ttyAMA2` – doesn't work.
+    > `link=/dev/ttyAMA2` – doesn't work with some paths at macOS.
 
 ## Notes
 
