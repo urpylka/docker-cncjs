@@ -10,7 +10,8 @@ docker run -d --device=/dev/ttyACM0 --cap-add=SYS_RAWIO -v "cncjs:/config" -p 80
 
 ## UART Wi-Fi bridge
 
-It can be made with `ESP8266`. For doing that use [esp-link](https://github.com/jeelabs/esp-link).
+It can be made with an `ESP8266` chip. For doing it use [esp-link](https://github.com/jeelabs/esp-link).
+
 To do virtual serial interface can be used `socat`.
 
 ```bash
@@ -20,6 +21,8 @@ socat pty,link=/dev/ttyAMA2,raw,echo=0 tcp:IP_OF_ESP8266:23
 `link=/dev/ttyAMA2` – doesn't work with some paths at macOS.
 
 To throw intarface to docker container use `-v /dev/ttyAMA2:/dev/ttyAMA2`, `--device /dev/ttyAMA2` – doesn't work.
+
+> I've build preconfigured version you can find that in `feature-esplink` branch [here](../../tree/feature-esplink).
 
 ## Notes
 
