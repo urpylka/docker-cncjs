@@ -1,0 +1,22 @@
+{
+    "ports": [
+        {
+            "comName": "/dev/tty.esplink",
+            "manufacturer": "ESP LINK"
+        }
+    ],
+    "commands": [
+        {
+            "title": "Start socat",
+            "commands": "/usr/bin/socat pty,link=/dev/tty.esplink,raw,echo=0 tcp:${ESPLINK}"
+        },
+        {
+            "title": "Stop socat",
+            "commands": "pkill -f socat"
+        },
+        {
+            "title": "Restart CNCjs",
+            "commands": "pkill -f cncjs"
+        }
+    ]
+}

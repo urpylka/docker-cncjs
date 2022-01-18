@@ -1,4 +1,6 @@
-# cncjs in arm64 docker image
+# docker-cncjs
+
+This is based on Debian because it cannot be installed to `alpine` by `npm install` or builded there by `node`.
 
 ## Quick start
 
@@ -13,19 +15,7 @@ docker run -d --device=/dev/ttyACM0 --cap-add=SYS_RAWIO -v "cncjs:/config" -p 80
 ## UART Wi-Fi bridge
 
 1. On CNC side it can be made with an `ESP8266` chip. For doing it use [esp-link](https://github.com/jeelabs/esp-link).
-2. Use preconfigured image from [`feature-esplink` branch](../../tree/feature-esplink).
-
-    To do it virtual serial interface manually can be used `socat`.
-
-    ```bash
-    socat pty,link=/dev/ttyAMA2,raw,echo=0 tcp:IP_OF_ESP8266:23
-    ```
-
-    > `link=/dev/ttyAMA2` – doesn't work with some paths at macOS.
-
-## Notes
-
-It cannot be installed to `alpine` by `npm install` or builded there by `node`.
+2. On CNCjs side define `ESPLINK` (fe 192.168.1.80:23), add use commands (`Start socat`, `Stop socat`, `pkill -f cncjs`) from `cncjs.json` to control it.
 
 ## References
 
